@@ -54,7 +54,7 @@ resource "aws_efs_access_point" "default" {
     }
   }
 
-  tags = module.this.tags
+  tags = merge(module.this.tags, var.access_points[each.key]["additional_tags"])
 }
 
 module "security_group" {
